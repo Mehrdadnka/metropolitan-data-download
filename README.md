@@ -132,7 +132,7 @@ iran_pottery_dataset/
 
 ## 👤 Author
 
-**مهرداد (Mehrdad)**
+**Mehrdadnka**
 Master's Thesis Project – \[Art University Of Isfahan]
 Email: *\[mehrdad2762@gmail.com]*
 GitHub: *\[https://github.com/Mehrdadnka]*
