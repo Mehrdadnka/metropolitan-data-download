@@ -1,64 +1,166 @@
-# Iranian Pottery Dataset Collector Metropolitan-Dataset-Api
+این یک نسخه کامل‌تر، حرفه‌ای و دقیق‌تر از README پروژه‌ی «Iranian Pottery Dataset Collector – Metropolitan-Dataset-Api» است که به صورت پژوهشی و مستند نوشته شده است:
 
-A Python-based tool designed to automate the process of collecting, classifying, and storing high-quality images and metadata of Iranian pottery artifacts from The Metropolitan Museum of Art (MET) public API.
+---
 
-## Purpose
+# Iranian Pottery Dataset Collector: Metropolitan-Dataset-Api
 
-This tool was developed as part of a research project on the classification of ancient pottery from Iran for use in machine learning applications, including historical period classification and digital heritage preservation.
+A fully automated, multithreaded Python tool for collecting, classifying, and organizing high-quality images and metadata of ancient Iranian pottery from The Metropolitan Museum of Art (MET) public API — designed for use in machine learning, digital heritage preservation, and archaeological research.
 
-## Features
+---
 
-- Downloads images and metadata from the MET Museum Collection API.
-- Classifies artifacts into:
-  - **Pre-Islamic periods** (e.g., Elam, Achaemenid, Sassanian)
-  - **Islamic periods** (e.g., Safavid, Seljuk, Qajar)
-- Automatically structures data into period-based folders.
-- Exports metadata in both JSON and CSV formats.
-- Includes error handling, retries, and progress bars.
-- Lightweight and fully configurable.
+## 🔍 Purpose
 
-## Configuration
+This tool supports a master's research project focused on the **classification of ancient Iranian pottery** by historical period. The collected data serves as a training set for machine learning models in:
 
-The main settings are defined in the `CONFIG` dictionary inside the script:
+* Artifact classification
+* Chronological period detection
+* Digital preservation of cultural heritage
 
-- `dataset_path`: Destination folder
-- `timeout`: HTTP request timeout
-- `retries`: Number of retries per download
-- `max_images`: Maximum number of images to download
-- `historical_periods`: Keywords for period classification
-- `user_agents`: Random User-Agent selection for API requests
+---
 
-## Usage
+## 🎯 Key Features
 
-1. Install required libraries:
-    ```bash
-    pip install requests tqdm
-    ```
+✅ **Automated Data Collection**
+Fetches pottery artifacts from the MET Collection API using carefully crafted search queries.
 
-2. Run the script:
-    ```bash
-    python iran_pottery_downloader.py
-    ```
+✅ **Intelligent Classification**
+Automatically classifies artifacts into:
 
-3. Results:
-    - Images saved in `./iran_pottery_dataset/images/`
-    - Metadata available in:
-        - `iran_pottery_metadata.json`
-        - `iran_pottery_metadata.csv`
+* **Pre-Islamic periods**: e.g., Elam, Achaemenid, Sassanian
+* **Islamic periods**: e.g., Safavid, Seljuk, Qajar
 
-## Limitations
+Based on keywords extracted from object metadata (title, culture, period, objectDate).
 
-- Depends on the availability and accuracy of the MET API.
-- Classification is keyword-based; false positives are possible.
-- Designed for initial dataset preparation; manual curation is recommended.
+✅ **Folder Structure by Period**
+Downloads and stores each artifact's image into a hierarchical folder structure by **era and historical sub-period**.
 
-## Author
+✅ **Metadata Export**
+Saves comprehensive metadata in:
 
-**مهرداد (Mehrdad)**  
-Master's Thesis Project - [Your University Name Here]  
-Email: [Your Email]  
-GitHub: [Your GitHub Profile URL]
+* **JSON** format (`iran_pottery_metadata.json`)
+* **CSV** format (`iran_pottery_metadata.csv`) — suitable for ML pipelines.
 
-## License
+✅ **Multithreaded Performance**
+Fast, concurrent downloads with error handling and retry logic.
 
-This project is released under the MIT License.
+✅ **Robust Download Verification**
+Ensures only high-quality images (≥10KB) are saved.
+
+✅ **Configurable**
+Modify dataset size, retries, timeouts, historical period filters, and more in the `CONFIG` dictionary.
+
+---
+
+## ⚙️ Configuration Overview
+
+Adjust these in the script’s `CONFIG` dictionary:
+
+| Parameter            | Description                                           | Example Value                 |
+| -------------------- | ----------------------------------------------------- | ----------------------------- |
+| `dataset_path`       | Root folder for images and metadata                   | `"./iran_pottery_dataset"`    |
+| `timeout`            | Timeout per API request (seconds)                     | `25`                          |
+| `retries`            | Number of download retries per image                  | `4`                           |
+| `max_images`         | Maximum number of images to collect                   | `200`                         |
+| `historical_periods` | Dictionary of Pre-Islamic and Islamic period keywords | see script                    |
+| `user_agents`        | Random User-Agent rotation for requests               | Chrome, Safari, Linux headers |
+
+---
+
+## 🚀 Usage Instructions
+
+### 1. Install Dependencies
+
+```bash
+pip install requests tqdm
+```
+
+### 2. Run the Collector
+
+```bash
+python iran_pottery_downloader.py
+```
+
+### 3. Output Structure
+
+```
+iran_pottery_dataset/
+│
+├── images/
+│   ├── pre_islamic/
+│   │   ├── Elam/
+│   │   ├── Achaemenid/
+│   │   └── Sassanian/
+│   └── islamic/
+│       ├── Safavid/
+│       ├── Seljuk/
+│       └── Qajar/
+│
+├── iran_pottery_metadata.json   # Full metadata (JSON)
+└── iran_pottery_metadata.csv    # Tabular metadata (CSV)
+```
+
+---
+
+## 📋 Sample Metadata Fields
+
+| Field Name           | Example Value                               |
+| -------------------- | ------------------------------------------- |
+| `objectID`           | 324019                                      |
+| `title`              | Bowl with geometric patterns                |
+| `culture`            | Iranian                                     |
+| `period`             | Achaemenid                                  |
+| `objectDate`         | 5th century B.C.                            |
+| `classification`     | Ceramics                                    |
+| `era_classification` | pre\_islamic                                |
+| `historical_period`  | Achaemenid                                  |
+| `local_path`         | ./images/pre\_islamic/Achaemenid/324019.jpg |
+
+---
+
+## ⚠️ Known Limitations
+
+* **Keyword-based classification**: Possible misclassifications due to incomplete or ambiguous metadata from the MET API.
+* **API reliance**: Dependent on MET's public API availability and accuracy.
+* **Curation needed**: Automatic results may include artifacts irrelevant to the research focus (manual review is advised for final dataset usage).
+
+---
+
+## 🧩 Planned Improvements
+
+* Integration with other museum APIs (e.g., British Museum, Louvre)
+* Advanced NLP-based period classification
+* Duplicate detection & removal
+* Automatic dataset curation suggestions
+
+---
+
+## 👤 Author
+
+**مهرداد (Mehrdad)**
+Master's Thesis Project – \[Art University Of Isfahan]
+Email: *\[mehrdad2762@gmail.com]*
+GitHub: *\[https://github.com/Mehrdadnka]*
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License.
+See the [LICENSE](LICENSE) file for details.
+
+---
+
+## ❤️ Acknowledgments
+
+* The Metropolitan Museum of Art (MET) Open Access Initiative
+* Python Community and Open-Source Contributors
+
+---
+
+### 🔗 Related Resources
+
+* [MET Collection API Documentation](https://metmuseum.github.io/)
+
+---
+
+If you want, I can generate a `LICENSE` file and/or `requirements.txt` for this project as well.
