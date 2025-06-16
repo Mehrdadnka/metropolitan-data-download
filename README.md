@@ -1,7 +1,3 @@
-این یک نسخه کامل‌تر، حرفه‌ای و دقیق‌تر از README پروژه‌ی «Iranian Pottery Dataset Collector – Metropolitan-Dataset-Api» است که به صورت پژوهشی و مستند نوشته شده است:
-
----
-
 # Iranian Pottery Dataset Collector: Metropolitan-Dataset-Api
 
 A fully automated, multithreaded Python tool for collecting, classifying, and organizing high-quality images and metadata of ancient Iranian pottery from The Metropolitan Museum of Art (MET) public API — designed for use in machine learning, digital heritage preservation, and archaeological research.
