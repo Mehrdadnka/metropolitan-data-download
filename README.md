@@ -157,6 +157,3 @@ See the [LICENSE](LICENSE) file for details.
 
 * [MET Collection API Documentation](https://metmuseum.github.io/)
 
----
-
-If you want, I can generate a `LICENSE` file and/or `requirements.txt` for this project as well.
